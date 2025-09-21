@@ -68,17 +68,23 @@ def signup():
 def patient():
     if session.get("role") != "patient":
         return redirect(url_for("login"))
-    return render_template("patient_portal.html", username=session['username'])
+    username = session['username']
+    con = sqlite3.connect("profiles.db")
+    cur = con.cursor()
+    cur.execute(f"SELECT * FROM profiles where username='{username}';")
+    patients=cur.fetchone()
+    return render_template("patient_portal.html", username=username, patients=patients)
 
 @app.route("/doctor", methods=["GET"])
 def doctor():
     if session.get("role") != "doctor":
         return redirect(url_for("login"))
+    username = session['username']
     con = sqlite3.connect("profiles.db")
     cur = con.cursor()
     cur.execute("SELECT * FROM profiles where role='patient';")
     patients=cur.fetchall()
-    return render_template("doctor_portal.html", username=session['username'], patients=patients)
+    return render_template("doctor_portal.html", username=username, patients=patients)
 
 @app.route("/logout", methods=["GET"])
 def logout():
