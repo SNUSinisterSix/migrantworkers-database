@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Records Login</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form action="/login" method="post">
+      
+      <!-- Role selection -->
+      <div class="role-selector">
+        <input type="radio" id="patient" name="role" value="patient" required>
+        <label for="patient">Patient</label>
+
+        <input type="radio" id="mentor" name="role" value="mentor">
+        <label for="mentor">Mentor</label>
+
+        <input type="radio" id="doctor" name="role" value="doctor">
+        <label for="doctor">Doctor</label>
+
+        <input type="radio" id="insurance" name="role" value="insurance">
+        <label for="insurance">Insurance</label>
+      </div>
+      
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+    
+    {% if error %}
+      <p class="error-msg">{{ error }}</p>
+    {% endif %}
+    
+      <br>
+    <a href="{{url_for('signup')}}" class="signup-btn">Sign-Up</a>
+    <p class="note">Health Records Portal for Migrant Workers of Kerala</p>
+  </div>
+</body>
+</html>
