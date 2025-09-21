@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Details - Health Records</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='user.css')}}">
+</head>
+<body>
+  <div class="details-container">
+    <h2>User Details</h2>
+    
+    <div class="profile-card">
+      <div class="profile-header">
+        <img src="https://en.wikipedia.org/wiki/File:Sinister_Six.jpg" alt="User Photo" class="profile-img">
+        <div>
+          <h3 id="user-name">{{ username }}</h3>
+          <p id="user-role">{{ role }}</p>
+        </div>
+      </div>
+      
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="label">Age:</span>
+          <span id="user-age">34</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Gender:</span>
+          <span id="user-gender">Male</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Phone:</span>
+          <span id="user-phone">+91 98765 43210</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Address:</span>
+          <span id="user-address">Kochi, Kerala</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Health ID:</span>
+          <span id="user-healthid">HR123456</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Insurance Provider:</span>
+          <span id="user-insurance">XYZ Insurance</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="btn-container">
+      <a href="/edit" class="action-btn">Edit Details</a>
+      <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+  </div>
+</body>
+</html>
