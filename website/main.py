@@ -6,7 +6,7 @@ app.secret_key = 'secret_key'
 
 @app.route("/")
 def home():
-    return redirect(url_for("login"))
+    return render_template("home.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

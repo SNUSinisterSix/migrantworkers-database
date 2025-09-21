@@ -4,15 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SwasthyaSetu</title>
-  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">➕ SwasthyaSetu</div>
     <div class="nav-links">
-      <a href="#">Login</a>
-      <button class="btn primary">Get Started</button>
+      <a href="{{ url_for('login') }}" class="button_primary">Login</a>
+      <a href="https://google.com" class="button_secondary">Get Started</a>
     </div>
   </nav>
 
@@ -25,8 +24,8 @@
         streamline care.
       </p>
       <div class="buttons">
-        <button class="btn primary">Register Now</button>
-        <button class="btn secondary">Learn More</button>
+        <a href="{{ url_for('signup') }}" class="button_secondary">Register Now</a>
+        <a href="https://google.com" class="button_primary">Learn More</a>
       </div>
     </div>
   </section>
