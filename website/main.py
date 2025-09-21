@@ -1,6 +1,5 @@
 from flask import Flask, render_template, url_for, request, redirect
-import pandas as pd
-from openpyxl import load_workbook
+import sqlite3
 
 app = Flask(__name__)
 
@@ -13,13 +12,18 @@ def login():
     if request.method == "GET":
         return render_template("login.html")
     else:
-        profiles = pd.read_excel('profiles.xlsx')
+        con = sqlite3.connect("profiles.db")
+        cur = con.cursor()
+        cur.execute("SELECT username from profiles;")
+        username_list = cur.fetchall()
         
         role = request.form.get("role")
         username = request.form.get("username")
         password = request.form.get("password")
-        if username in profiles["Username"].values:
-            correct_password = profiles[profiles["Username"]==username].iloc[0]["Password"]
+
+        if (username,) in username_list:
+            cur.execute(f"SELECT password from profiles where username='{username}'")
+            correct_password = cur.fetchone()[0]
             if password == correct_password:
                 return render_template("user.html", username=username, role=role)
             else:
@@ -32,19 +36,22 @@ def signup():
     if request.method == "GET":
         return render_template("signup.html")
     else:
-        profiles_wb = load_workbook('profiles.xlsx')
-        profiles = pd.read_excel('profiles.xlsx')
+        con = sqlite3.connect("profiles.db")
+        cur = con.cursor()
+        cur.execute("SELECT username from profiles;")
+
+        username_list = cur.fetchall()
 
         role = request.form.get("role")
         username = request.form.get("username")
         password = request.form.get("password")
         email = request.form.get("email")
 
-        if username in profiles["Username"].values:
+        if (username, ) in username_list:
             return render_template("signup.html", error="Username taken")
         else:
-            profiles_wb.active.append([role, username, password, email])
-            profiles_wb.save('profiles.xlsx')
+            cur.execute(f"INSERT INTO profiles VALUES ('{role}', '{username}', '{password}', '{email}');")
+            con.commit()
 
             return redirect(url_for("login"))
 
