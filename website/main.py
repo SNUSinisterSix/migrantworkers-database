@@ -59,7 +59,7 @@ def signup():
         if (username, ) in username_list:
             return render_template("signup.html", error="Username taken")
         else:
-            cur.execute(f"INSERT INTO profiles VALUES ('{role}', '{username}', '{password}', '{email}', '{phone}', '{gender}');")
+            cur.execute(f"INSERT INTO profiles VALUES ('{role}', '{username}', '{password}', '{email}', '{phone}', '{gender}', 'None');")
             con.commit()
 
             return redirect(url_for("login"))
