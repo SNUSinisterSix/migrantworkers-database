@@ -118,6 +118,37 @@ body {
   color: white;
 }
 
+.gender-options {
+  display: flex;
+  gap: 10px;
+}
+
+.gender-options input[type="radio"] {
+  display: none;
+}
+
+.gender-options label {
+  padding: 8px 14px;
+  border: 1px solid #cce0ff;
+  border-radius: 20px;
+  background: #f0f8ff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.gender-options label:hover {
+  background: #e0f0ff;
+  border-color: #3399ff;
+}
+
+.gender-options input[type="radio"]:checked + label {
+  background: #3399ff;
+  color: white;
+  border-color: #007acc;
+  font-weight: bold;
+}
+
 .note {
   margin-top: 1rem;
   font-size: 12px;

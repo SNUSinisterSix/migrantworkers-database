@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Portal - Registered Patients</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='doctor-portal.css') }}">
+</head>
+<body>
+  <div class="portal-container">
+    <h2>Registered Patients</h2>
+    
+    <table class="patient-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for patient in patients %}
+        <tr>
+          <td>{{ patient[1] }}</td>
+          <td>{{ patient[3] }}</td>
+          <td>{{ patient[4] }}</td>
+          <td>{{ patient[5] }}</td>
+          <td>
+            {% if 0 %}
+              <span class="status complete">Form Completed</span>
+            {% else %}
+              <span class="status pending">Form Pending</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+    <div class="btn-container">
+      <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+  </div>
+</body>
+</html>
