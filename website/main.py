@@ -91,5 +91,9 @@ def logout():
     session.clear()
     return redirect(url_for("login"))
 
+@app.route("/upload_prescription", methods=["POST"])
+def upload_prescription():
+    return redirect(url_for("doctor"))
+
 if __name__ == "__main__":
     app.run()

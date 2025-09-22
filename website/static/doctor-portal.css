@@ -20,7 +20,6 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Table */
 .patient-table {
   width: 100%;
   border-collapse: collapse;
@@ -43,7 +42,6 @@ body {
   background: #f9fbff;
 }
 
-/* Status labels */
 .status {
   display: inline-block;
   padding: 5px 10px;
@@ -64,7 +62,6 @@ body {
   border: 1px solid #cc0000;
 }
 
-/* Logout button */
 .btn-container {
   margin-top: 1.5rem;
   text-align: right;
@@ -84,4 +81,13 @@ body {
 .logout-btn:hover {
   background-color: #3399ff;
   color: white;
+}
+
+#file_button {
+  background-color: #3399ff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 8px;
 }
