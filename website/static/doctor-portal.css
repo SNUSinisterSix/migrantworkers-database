@@ -50,13 +50,12 @@ body {
   font-weight: bold;
 }
 
-.status.complete {
-  background-color: #d4f8d4;
-  color: #2d7a2d;
-  border: 1px solid #2d7a2d;
-}
-
-.status.pending {
+.status-pending {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
   background-color: #ffe6e6;
   color: #cc0000;
   border: 1px solid #cc0000;
@@ -83,7 +82,7 @@ body {
   color: white;
 }
 
-#file_button {
+#file-button {
   background-color: #3399ff;
   border: none;
   color: white;

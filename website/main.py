@@ -72,8 +72,9 @@ def patient():
     con = sqlite3.connect("profiles.db")
     cur = con.cursor()
     cur.execute(f"SELECT * FROM profiles where username='{username}';")
-    patients=cur.fetchone()
-    return render_template("patient_portal.html", username=username, patients=patients)
+    patients = cur.fetchone()
+    prescriptions = [("Dr. Ananya Sharma", "Cardiologist", "2025-09-24", "Active"), ("Dr. Rohan Verma", "General Physician", "2025-08-17", "Active"), ("Dr. Priya Singh", "Dermatologist", "2025-08-21", "Expired"), ("Dr. Ananya Sharma", "Cardiologist", "2025-06-10", "Expired")]
+    return render_template("patient_portal.html", username=username, patients=patients, prescriptions=prescriptions)
 
 @app.route("/doctor", methods=["GET"])
 def doctor():

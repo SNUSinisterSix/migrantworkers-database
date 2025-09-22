@@ -28,17 +28,11 @@
           <td>{{ patient[3] }}</td>
           <td>{{ patient[4] }}</td>
           <td>{{ patient[5] }}</td>
-          <td>
-            {% if 0 %}
-              <span class="status complete">Form Completed</span>
-            {% else %}
-              <span class="status pending">Form Pending</span>
-            {% endif %}
-          </td>
+          <td><span class="status-pending">Form Pending</span></td>
           <td style="text-align: center;">
             <form action="{{ url_for('upload_prescription', name=patient[0]) }}" method="post" enctype="multipart/form-data">
-              <input type="file" name="prescription" accept=".pdf,.jpg,.png" id="file_input" onchange = "button_display()" required><br><br>
-              <button type="submit" id="file_button" disabled="true">Upload</button>
+              <input type="file" name="prescription" accept=".pdf,.jpg,.png" id="file-input" onchange = "button_display()" required><br><br>
+              <button type="submit" id="file-button" disabled="true">Upload</button>
             </form>
           </td>
         </tr>
@@ -52,8 +46,8 @@
   </div>
   <script>
     function button_display() {
-      const button = document.getElementById("file_button");
-      const file = document.getElementById("file_input");
+      const button = document.getElementById("file-button");
+      const file = document.getElementById("file-input");
       if (file.files.length == 0) {
         button.disabled = true;
       } else {

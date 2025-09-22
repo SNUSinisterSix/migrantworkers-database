@@ -3,24 +3,28 @@ body {
   background: linear-gradient(to right, #e6f2ff, #f9fbff);
   margin: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-.details-container {
+.details-container, .prescriptions-container {
   background: #fff;
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
   max-width: 600px;
   width: 90%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.details-container h2 {
+.details-container h2 , .prescriptions-container h2{
   text-align: center;
   color: #0066cc;
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .profile-card {
@@ -107,6 +111,60 @@ body {
   background-color: #007acc;
 }
 
+.prescription-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prescription-table th, 
+.prescription-table td {
+  border: 1px solid #cce0ff;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.prescription-table th {
+  background: #f0f8ff;
+  color: #0066cc;
+}
+
+.prescription-active {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #d4f8d4;
+  color: #2d7a2d;
+  border: 1px solid #2d7a2d;
+}
+
+.prescription-expired {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #e8e8e8;
+  color: black;
+  border: 1px solid gray;
+}
+
+.prescription-button {
+  background-color: #f1f1f1;
+  border: 1px solid gray;
+  color: black;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.prescription-button:hover {
+  background-color: #d3d3d3;
+}
+
 .logout-btn {
   background-color: #f0f8ff;
   color: #0066cc;
@@ -117,3 +175,4 @@ body {
   background-color: #3399ff;
   color: white;
 }
+

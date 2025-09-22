@@ -48,9 +48,40 @@
     </div>
     
     <div class="btn-container">
-      <a href="/edit" class="action-btn">Edit Details</a>
+      <a href="/patient" class="action-btn">Edit Details</a>
       <a href="/logout" class="logout-btn">Logout</a>
     </div>
+  </div>
+  <div class="prescriptions-container">
+      <h2>Prescriptions</h2>
+      <table class="prescription-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Specialty</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for prescription in prescriptions %}
+        <tr>
+          <td>{{ prescription[0] }}</td>
+          <td>{{ prescription[1] }}</td>
+          <td>{{ prescription[2] }}</td>
+          {% if prescription[3] == 'Active' %}
+            <td><span class="prescription-active">Active</span></td>
+          {% else %}
+            <td><span class="prescription-expired">Expired</span></td>
+          {% endif %}
+          <td>
+            <button class="prescription-button">Download PDF</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
   </div>
 </body>
 </html>

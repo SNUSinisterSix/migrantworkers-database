@@ -43,7 +43,7 @@ body {
   cursor: pointer;
 }
 
-a.button_primary {
+a.button-primary {
   background-color: #3399ff;
   padding: 8px 20px;
   text-decoration: none;
@@ -52,7 +52,7 @@ a.button_primary {
   font-size: 16px;
 }
 
-a.button_secondary {
+a.button-secondary {
   background-color: #f1f1f1;
   padding: 8px 20px;
   text-decoration: none;
