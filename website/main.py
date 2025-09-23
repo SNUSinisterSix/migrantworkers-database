@@ -59,7 +59,7 @@ def signup():
         if (username, ) in username_list:
             return render_template("signup.html", error="Username taken")
         else:
-            cur.execute(f"INSERT INTO profiles VALUES ('{role}', '{username}', '{password}', '{email}', '{phone}', '{gender}', 'None');")
+            cur.execute(f"INSERT INTO profiles (id, role, username, password, email, phone, gender, insurance) VALUES (NULL, '{role}', '{username}', '{password}', '{email}', '{phone}', '{gender}', NULL);")
             con.commit()
 
             return redirect(url_for("login"))
@@ -71,7 +71,7 @@ def patient():
     username = session['username']
     con = sqlite3.connect("profiles.db")
     cur = con.cursor()
-    cur.execute(f"SELECT * FROM profiles where username='{username}';")
+    cur.execute(f"SELECT id, role, username, email, phone, gender, insurance FROM profiles where username='{username}';")
     patients = cur.fetchone()
     prescriptions = [("Dr. Ananya Sharma", "Cardiologist", "2025-09-24", "Active"), ("Dr. Rohan Verma", "General Physician", "2025-08-17", "Active"), ("Dr. Priya Singh", "Dermatologist", "2025-08-21", "Expired"), ("Dr. Ananya Sharma", "Cardiologist", "2025-06-10", "Expired")]
     return render_template("patient_portal.html", username=username, patients=patients, prescriptions=prescriptions)
@@ -86,6 +86,18 @@ def doctor():
     cur.execute("SELECT * FROM profiles where role='patient';")
     patients=cur.fetchall()
     return render_template("doctor_portal.html", username=username, patients=patients)
+
+@app.route("/insurance", methods=["GET"])
+def insurance():
+    if session.get("role") != "insurance":
+        return redirect(url_for("login"))
+    username = session['username']
+    con = sqlite3.connect("profiles.db")
+    cur = con.cursor()
+    cur.execute(f"SELECT * FROM profiles where insurance='{username}';")
+    patients=cur.fetchall()
+    return render_template("insurance_portal.html", username=username, patients=patients)
+
 
 @app.route("/logout", methods=["GET"])
 def logout():
