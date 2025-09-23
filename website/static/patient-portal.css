@@ -9,7 +9,7 @@ body {
   min-height: 100vh;
 }
 
-.details-container, .prescriptions-container {
+.portal-container, .prescriptions-container {
   background: #fff;
   padding: 2rem;
   border-radius: 15px;
@@ -20,7 +20,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.details-container h2 , .prescriptions-container h2{
+.portal-container h2 , .prescriptions-container h2{
   text-align: center;
   color: #0066cc;
   margin-top: 1rem;

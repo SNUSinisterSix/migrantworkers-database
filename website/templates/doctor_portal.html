@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="portal-container">
-    <h2>Registered Patients</h2>
+    <h2>Doctor Portal - Registered Patients</h2>
     
     <table class="patient-table">
       <thead>
@@ -24,10 +24,10 @@
       <tbody>
         {% for patient in patients %}
         <tr>
-          <td>{{ patient[1] }}</td>
-          <td>{{ patient[3] }}</td>
+          <td>{{ patient[2] }}</td>
           <td>{{ patient[4] }}</td>
           <td>{{ patient[5] }}</td>
+          <td>{{ patient[6] }}</td>
           <td><span class="status-pending">Form Pending</span></td>
           <td style="text-align: center;">
             <form action="{{ url_for('upload_prescription', name=patient[0]) }}" method="post" enctype="multipart/form-data">

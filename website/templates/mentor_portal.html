@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mentor Portal</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='mentor-portal.css') }}">
+    </head>
+    <body>
+        <div class="portal-container">
+            <h2>Mentor Portal</h2>
+            <div class="mentor-card">
+                <p>Find patient by id:</p><br>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search..." name="id" class="patient-search" id="patient-search">
+                    <button id="search-button">Search</button>
+                </div>
+                <div id="patient-result">
+                    
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="/logout" class="logout-btn">Logout</a>
+            </div>
+        </div>
+        <script>
+            document.getElementById('search-button').addEventListener('click', () => {
+                const id = document.getElementById("patient-search").value;
+                fetch('/patient_search', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({id})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const resultDiv = document.getElementById('patient-result');
+                    if(data.result){
+                        resultDiv.innerHTML = `
+                            <h3>Patient details found:</h3>
+                            <p>${data.result[2]}</p>
+                            <p>${data.result[4]}</p>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `<p>Patient not found</p>`;
+                    }
+                });
+            });
+        
+        </script>
+    </body>
+</html>
