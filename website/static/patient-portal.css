@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "PT Sans", Arial, sans-serif;
   background: linear-gradient(to right, #e6f2ff, #f9fbff);
   margin: 0;
   display: flex;
@@ -9,7 +9,7 @@ body {
   min-height: 100vh;
 }
 
-.portal-container, .prescriptions-container {
+.portal-container, .prescriptions-container, .vitals-container{
   background: #fff;
   padding: 2rem;
   border-radius: 15px;
@@ -20,8 +20,9 @@ body {
   margin-bottom: 1rem;
 }
 
-.portal-container h2 , .prescriptions-container h2{
+.portal-container h2 , .prescriptions-container h2, .vitals-container h2{
   text-align: center;
+  font-weight: bold;
   color: #0066cc;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -65,6 +66,39 @@ body {
   color: #666;
 }
 
+.input-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 14px;
+  color: #333;
+}
+
+.input-group input {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #cce0ff;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #3399ff;
+}
+
+.input-grid {
+  background: #f9fbff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
 .details-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -91,7 +125,7 @@ body {
   margin-top: 1.5rem;
 }
 
-.action-btn, .logout-btn {
+.action-btn, .logout-btn, .vitals-btn{
   text-decoration: none;
   padding: 10px 16px;
   border-radius: 8px;
@@ -102,12 +136,13 @@ body {
   margin: 0 5px;
 }
 
-.action-btn {
+.action-btn, .vitals-btn {
   background-color: #3399ff;
+  border: 1px solid #3399ff;
   color: white;
 }
 
-.action-btn:hover {
+.action-btn:hover, .vitals-btn:hover {
   background-color: #007acc;
 }
 
@@ -165,14 +200,16 @@ body {
   background-color: #d3d3d3;
 }
 
-.logout-btn {
+.logout-btn{
   background-color: #f0f8ff;
   color: #0066cc;
   border: 1px solid #3399ff;
 }
 
-.logout-btn:hover {
+.logout-btn:hover{
   background-color: #3399ff;
   color: white;
 }
+
+
 

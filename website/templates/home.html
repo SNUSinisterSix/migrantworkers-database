@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arogya Sahayi</title>
   <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
     <div class="logo">➕ Arogya Sahayi</div>
     <div class="nav-links">
       <a href="{{ url_for('login') }}" class="button-primary">Login</a>
-      <a href="https://google.com" class="button-secondary">Get Started</a>
+      <a href="{{ url_for('signup') }}" class="button-secondary">Get Started</a>
     </div>
   </nav>
 

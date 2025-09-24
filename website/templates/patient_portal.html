@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Patient Portal - User Details</title>
   <link rel="stylesheet" href="{{url_for('static', filename='patient-portal.css')}}">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="portal-container">
@@ -82,6 +83,32 @@
         {% endfor %}
       </tbody>
       </table>
+  </div>
+  <div class="vitals-container">
+    <h2>Log vitals</h2>
+    <p>Regularly logging your vitals helps your doctor track your progress.</p><br>
+    <div class="input-grid">
+      <div class="input-group">
+        <label for="blood-pressure">Blood Pressure (e.g., 120/80)</label>
+        <input type="text" id="blood-pressure" name="pressure" required>
+      </div>
+    
+      <div class="input-group">
+        <label for="blood-sugar">Blood Sugar (mg/dL)</label>
+        <input type="text" id="blood-sugar" name="sugar" required>
+      </div>
+
+      <div class="input-group">
+        <label for="temperature">Temperature (°C)</label>
+        <input type="text" id="temperature" name="temperature" required>
+      </div>
+
+      <div class="input-group">
+        <label for="oxygen-saturation">Oxygen Saturation (%)</p>
+        <input type="text" id="oxygen-saturation" name="oxygen" required>
+      </div>
+    </div><br>
+    <button class="vitals-btn">Log Vitals</button>
   </div>
 </body>
 </html>

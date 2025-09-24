@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mentor Portal</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='mentor-portal.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class="portal-container">
@@ -38,7 +39,9 @@
                         resultDiv.innerHTML = `
                             <h3>Patient details found:</h3>
                             <p>${data.result[2]}</p>
-                            <p>${data.result[4]}</p>
+                            <p>${data.result[4]}</p><br>
+                            <h3>QR code to patient details:</h3>
+                            <img src="/static/${data.result[0]}.png"></img>
                         `;
                     } else {
                         resultDiv.innerHTML = `<p>Patient not found</p>`;

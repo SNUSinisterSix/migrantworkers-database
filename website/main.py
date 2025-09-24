@@ -1,5 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect, session, jsonify
 import sqlite3
+import qrcode
+
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
@@ -66,13 +68,21 @@ def signup():
 
             return redirect(url_for("login"))
         
-@app.route("/patient", methods=["GET", ])
+@app.route("/patient", methods=["GET"])
 def patient():
-    if session.get("role") not in  ("patient", "mentor"):
+    qr_username = request.args.get('username')
+    qr_id = request.args.get('id')
+
+    if qr_username:
+        session['username'] = qr_username
+        session['id'] = qr_id
+        session['role'] = 'patient'
+
+    if session.get("role") not in ("patient", "mentor"):
         return redirect(url_for("login"))
-    username = session['username']
     con = sqlite3.connect("profiles.db")
     cur = con.cursor()
+    username = session['username']
     cur.execute(f"SELECT id, role, username, email, phone, gender, insurance FROM profiles where id='{session['id']}';")
     patients = cur.fetchone()
     prescriptions = [("Dr. Ananya Sharma", "Cardiologist", "2025-09-24", "Active"), ("Dr. Rohan Verma", "General Physician", "2025-08-17", "Active"), ("Dr. Priya Singh", "Dermatologist", "2025-08-21", "Expired"), ("Dr. Ananya Sharma", "Cardiologist", "2025-06-10", "Expired")]
@@ -107,7 +117,6 @@ def mentor():
     username = session['username']
     return render_template("mentor_portal.html", username=username)
 
-
 @app.route("/logout", methods=["GET"])
 def logout():
     session.clear()
@@ -124,10 +133,15 @@ def patient_search():
     cur = con.cursor()
     cur.execute(f"SELECT * from profiles where id = {data['id']}")
     result = cur.fetchone()
+    print(data)
+
+    qr_code = qrcode.make(url_for("patient", username=result[2], id=result[0], _external=True))
+    qr_code.save(f"static/{result[0]}.png")
+
     if result:
         return jsonify({"result":result})
     else:
         return jsonify({"result":None})
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0")

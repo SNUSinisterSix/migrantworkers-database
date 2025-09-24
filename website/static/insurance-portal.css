@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "PT Sans", Arial, sans-serif;
   background: linear-gradient(to right, #e6f2ff, #f9fbff);
   margin: 0;
   padding: 20px;
@@ -15,6 +15,7 @@ body {
 }
 
 .portal-container h2 {
+  font-weight: bold;
   text-align: center;
   color: #0066cc;
   margin-bottom: 1.5rem;
